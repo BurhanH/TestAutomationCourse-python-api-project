@@ -40,4 +40,4 @@ python -m unittest discover tests "*.py" -v
 - There are 2 or more ways to do it
   - Add more API tests
   - Add test cases as a documentation
-  - Improve current repository via adding a new functionality or posting any issues or ideas/improvements on [issues tab](issues)
+  - Improve current repository via adding a new functionality or posting any issues or ideas/improvements on [issues tab](https://github.com/BurhanH/TestAutomationCourse-python-api-project/issues)
