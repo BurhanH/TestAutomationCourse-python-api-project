@@ -1,2 +1,36 @@
 # TestAutomationCourse-python-api-project
 Python API project for Test Automation Course
+
+[![Run Python Tests](https://github.com/BurhanH/TestAutomationCourse-python-api-project/actions/workflows/run-tests.yml/badge.svg)](https://github.com/BurhanH/TestAutomationCourse-python-api-project/actions/workflows/run-tests.yml)
+
+## How to run tests from one file
+
+In terminal execute:
+
+```
+python -m unittest -v tests/your_test_file.py
+```
+
+## How to run specific test (or test method) from test class
+
+```
+python tests/your_test_file.py YourClass.test_method -v
+```
+
+## How to run all tests
+```
+python -m unittest discover tests "*.py" -v
+```
+
+## How to make a PR with your changes into this repository
+
+- Fork repository in GitHub
+- From forked repository make a copy to your local machine
+- Create a new branch (use descriptive name)
+- Make changes (add tests)
+- Commit changes into the branch
+- Push changes into forked repsitory
+- Make a PR from your forked repository into this repo
+- Add reviwers 
+- And send a message in our channel with a link to your PR
+- Note! If there are failures, please review logs and failed tests, and fix them!
