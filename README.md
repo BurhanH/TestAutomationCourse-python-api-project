@@ -35,7 +35,7 @@ python -m unittest discover tests "*.py" -v
 - And send a message in our channel with a link to your PR
 - Note! If there are failures, please review logs and failed tests, and fix them!
 
-## How can I contrubute to this repository
+## How can I contribute to this repository
 
 - There are 2 or more ways to do it
   - Add more API tests
