@@ -4,7 +4,7 @@ BASE_URL = "https://www.breakingbadapi.com/api/"
 
 
 class TestCharacters(unittest.TestCase):
-            
+
     def test_all_characters(self):
         response = requests.get(BASE_URL + "characters")
         self.assertEqual(response.status_code, 200)
@@ -33,6 +33,25 @@ class TestCharacters(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         body = response.json()
         self.assertEqual(len(body), 0)
+
+    def test_character_by_category(self):
+        response = requests.get(BASE_URL + "characters/?category=Better+Call+Saul")
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertTrue(len(body) > 0)
+        for character in body:
+            self._check_character(character)
+            self.assertTrue("Better Call Saul" in character["category"])
+    
+    def test_character_by_category_limit(self):
+        response = requests.get(BASE_URL + "characters/?category=Better+Call+Saul&limit=2")
+        self.assertEqual(response.status_code, 200)
+        body1 = response.json()
+        self.assertTrue(len(body1) <= 2)
+        response = requests.get(BASE_URL + "characters/?category=Better+Call+Saul&limit=2&offset=2")
+        self.assertEqual(response.status_code, 200)
+        body2 = response.json()
+        self.assertNotEqual(body1, body2)
 
     #cheking character attributes
     def _check_character(self, character):
