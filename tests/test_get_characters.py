@@ -17,10 +17,22 @@ class TestCharacters(unittest.TestCase):
         response = requests.get(BASE_URL + "characters/1")
         self.assertEqual(response.status_code, 200)
         body = response.json()
-        print (body)
         self.assertEqual(len(body), 1)
         self.assertEqual(body[0]["char_id"], 1)
         self._check_character(body[0])
+
+    def test_single_character_invalid_id(self):
+        response = requests.get(BASE_URL + "characters/invalid_id")
+        self.assertNotEqual(response.status_code, 200)
+
+    def test_single_character_not_existing(self):
+        response = requests.get(BASE_URL + "characters")
+        body = response.json()
+        num = max([i["char_id"] for i in body])
+        response = requests.get(BASE_URL + "characters/" + str(num + 1))
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(len(body), 0)
 
     #cheking character attributes
     def _check_character(self, character):
