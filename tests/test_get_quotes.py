@@ -19,12 +19,6 @@ class TestGetQuotes(unittest.TestCase):
         for quote in body:
             self._check_quote_attr(quote)
 
-    def test_get_quotes_by_series(self):
-        response = requests.get(f'{URL}quote?series=Better+Call+Saul')
-        self.assertEqual(response.status_code, 200)
-        body = response.json()
-        print(body)
-
     def test_get_random_quote(self):
         response1 = requests.get(f'{URL}quote/random')
         self.assertEqual(response1.status_code, 200)
