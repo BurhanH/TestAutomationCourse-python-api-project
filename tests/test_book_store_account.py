@@ -22,8 +22,8 @@ USER_ID = None
 
 
 class TestBookStore(unittest.TestCase):
-
-    def check_ability_gen_token(self):
+    @staticmethod
+    def check_ability_gen_token():
         """check is is possible to generate token.
         If user not exists then
         status = failed
@@ -40,14 +40,12 @@ class TestBookStore(unittest.TestCase):
         body = response.json()
         actual_user_name = body["username"]
 
-        if (response.status_code == HTTP_CREATED):
+        if response.status_code == HTTP_CREATED:
             USER_ID = body["userID"]
-            print(f"new user {USER_NAME} created successfully!")
             self.assertEqual(HTTP_CREATED, response.status_code)
             self.assertEqual(USER_NAME, actual_user_name,
                              f"Desired user name '{USER_NAME}' is not equals to just created '{actual_user_name}'")
         else:
-            print(f"user {USER_NAME} already exists! ")
             self.assertTrue(response.status_code in [HTTP_NOT_AVAILABLE, HTTP_NOT_ACCEPTABLE],
                             f"unexpected response code {response.status_code}!")
             self.assertEqual("User exists!", body["message"],
@@ -92,12 +90,13 @@ class TestBookStore(unittest.TestCase):
         status_code = response.status_code
 
         if status_code == HTTP_NO_CONTENT:
-            print(f'Success! User {USER_NAME} deleted')
+            self.assertFalse(self.check_ability_gen_token())
         elif status_code == HTTP_OK:
-            body = response.json()
-            print(f'Error on user deletion: {body["message"]}, id="{USER_ID}"')
+            self.assertTrue(self.check_ability_gen_token(),
+                            f'Account not deleted! Status code{status_code}, but operation could not complete!')
         else:
-            print(f'Error on user deletion, status code: "{status_code}"')
+            self.assertTrue(self.check_ability_gen_token(),
+                            f'Unexpected Error on user deletion, status code: "{status_code}"!')
 
 
 if __name__ == '__main__':
