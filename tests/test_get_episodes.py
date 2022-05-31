@@ -6,6 +6,7 @@ BASE_URL = 'https://www.breakingbadapi.com/api/'
 HTTP_OK = 200
 TOTTAL_EPISODES = 102
 
+
 class TestEpisodes(unittest.TestCase):
 
     def _check_episodes_attr(self, episode):
@@ -16,7 +17,6 @@ class TestEpisodes(unittest.TestCase):
         self.assertTrue("air_date" in episode)
         self.assertTrue("characters" in episode)
         self.assertTrue("series" in episode)
-
 
     def test_get_all_episodes(self):
         response = requests.get(f'{BASE_URL}episodes')
@@ -50,7 +50,6 @@ class TestEpisodes(unittest.TestCase):
             self.assertTrue(series == episode["series"], f'{series} series is not found')
         self.assertEqual(body[0]["characters"], ["Jimmy McGill", "Mike Erhmantraut",
                                                  "Kim Wexler", "Howard Hamlin", "Chuck McGill", "Nacho Varga"])
-
     def test_episodes_by_part_name_of_series(self):
         series = "Breaking"
         response = requests.get(f'{BASE_URL}episodes?series=Breaking+Bad')
