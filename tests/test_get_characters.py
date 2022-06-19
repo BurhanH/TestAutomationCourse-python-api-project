@@ -1,6 +1,6 @@
 import unittest
 import pytest
-from utils.rest_api_helper import fetch, fetch_json
+from utils.rest_api_helper import fetch_json, RestApiHTTPError
 BASE_URL = "https://www.breakingbadapi.com/api/"
 
 
@@ -22,9 +22,9 @@ class TestCharacters(unittest.TestCase):
 
     @pytest.mark.regression
     def test_single_character_invalid_id(self):
-        response = fetch(f'{BASE_URL}characters/invalid_id')
-        self.assertNotEqual(response.status_code, 200, 
-                            "Request with an invalid_id should not be successful")
+        with pytest.raises(RestApiHTTPError) as error:
+            fetch_json(f'{BASE_URL}characters/invalid_id')
+        self.assertEqual(error.value.status_code, 500)
 
     @pytest.mark.regression
     def test_single_character_not_existing(self):
