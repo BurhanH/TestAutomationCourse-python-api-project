@@ -1,12 +1,12 @@
 import unittest
-from utils.rest_api_helper import RestApiHelper
+from utils.rest_api_helper import RestApiHelper as RestAPI
 BASE_URL = "https://www.breakingbadapi.com/api/"
 
 
 class TestCharacters(unittest.TestCase):
-    def __init__(self, methodName: str = ...) -> None:
-        super().__init__(methodName)
-        self.api = RestApiHelper(BASE_URL)
+    def __init__(self, method_name: str = ...) -> None:
+        super().__init__(method_name)
+        self.api = RestAPI(BASE_URL)
 
     def test_all_characters(self):
         body = self.api.fetch_json("characters")
@@ -81,7 +81,7 @@ class TestCharacters(unittest.TestCase):
             self._check_character(character)
             self.assertTrue("Walter" in character["name"])
 
-    #checking character attributes
+    # checking character attributes
     def _check_character(self, character):
         self.assertTrue("char_id" in character)
         self.assertTrue("name" in character)
