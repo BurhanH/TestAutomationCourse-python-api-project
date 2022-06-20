@@ -3,8 +3,8 @@ import requests
 import pytest
 from random import randint
 from faker import Faker as Fake
-from utils.colored_messages import yellow_on_red_back as bug_report
-from utils.extract_from_json import json_extractor as json_ex
+from utils_.colored_messages import yellow_on_red_back as bug_report
+from utils_.extract_from_json import json_extractor as json_ex
 
 '''Global variables'''
 BASE_URL = 'https://reqres.in/api/'
