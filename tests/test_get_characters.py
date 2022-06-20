@@ -1,5 +1,5 @@
 import unittest
-from utils_.rest_api_helper import fetch, fetch_json
+from utils.rest_api_helper import fetch, fetch_json
 BASE_URL = "https://www.breakingbadapi.com/api/"
 
 
