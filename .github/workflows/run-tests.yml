@@ -31,7 +31,7 @@ jobs:
 
     - name: Test with pytest and generate junit xml report
       run: |
-        pytest tests --junitxml report.xml
+        python -m pytest tests --junitxml report.xml
     
     - name: Create test summary
       uses: test-summary/action@v1.0
