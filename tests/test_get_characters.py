@@ -1,6 +1,7 @@
 import unittest
-from rest_api_helper import RestApiHelper
+from utils.rest_api_helper import RestApiHelper
 BASE_URL = "https://www.breakingbadapi.com/api/"
+
 
 class TestCharacters(unittest.TestCase):
     def __init__(self, methodName: str = ...) -> None:
