@@ -1,4 +1,4 @@
-name: Run Python Tests
+name: Run Python Tests and publish Allure report
 
 on:
   push:
