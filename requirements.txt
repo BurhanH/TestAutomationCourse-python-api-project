@@ -1,4 +1,5 @@
 requests==2.27.1
 pytest==7.1.2
 Faker==13.13.0
+allure-pytest==2.9.45
 pylint==2.14.3
