@@ -1,0 +1,2 @@
+[33m[41m[6m[1m >>> BUG!!! In user's list page -1 are not empty. <<< [0m
+[33m[41m[6m[1m >>> BUG!!! In user's list page 0 are not empty. <<< [0m
